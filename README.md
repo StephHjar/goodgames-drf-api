@@ -13,15 +13,19 @@ In the planning stage of this project, I created this Entity Relationship Diagra
 I have divided the functionality of the site and database into epics and user stories:
 
 **Epic:** Account Management
+
 **User Stories:**
 
 **Epic:** Managing Posts
+
 **User Stories:**
 
 **Epic:** Managing Games
+
 **User Stories:**
 
 **Epic:** Admin Capabilities
+
 **User Stories:**
 
 ## Testing 
@@ -58,7 +62,6 @@ You can break the credits section up into Content and Media, depending on what y
 
 ### Media
 
-- The photos used on the home and sign up page are from This Open Source site
-- The images used for the gallery page were taken from this other open source site
+- The default profile and default post images are from [Code Institute](https://codeinstitute.net/ie/)'s Django REST Framework walkthrough.
 
 Congratulations on completing your Readme, you have made another big stride in the direction of being a developer! 

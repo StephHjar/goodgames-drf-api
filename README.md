@@ -24,34 +24,33 @@ I have divided the functionality of the site and database into epics and user st
 ### **Epic:** Managing Posts
 
 **User Stories:**
-- As a **user** I can **add a new post when I start playing a game**
-- As a **user** I can **edit my posts if I need to make updates, or finish playing the game**
-- As a **user** I can **delete my posts**
-- As a **user** I can **like and unlike other users' posts**
+- As a **user** I can **add a new post** so that **I can show when I start playing a game** 
+- As a **user** I can **edit my posts** so that **I can make updates, or mark when I have finished playing the game**
+- As a **user** I can **delete my posts** so that **I can remove posts made in error, or that I don't want displayed on my profile anymore**
+- As a **user** I can **like and unlike other users' posts** so that **I can engage with content that I enjoy**
 
 ### **Epic:** Managing Comments
 
 **User Stories:**
-- As a **user** I can **comment on other users' posts**
-- As a **user** I can **edit comments I have made**
-- As a **user** I can **delete comments I have made**
+- As a **user** I can **comment on other users' posts** so that **I can engage in conversations with other users**
+- As a **user** I can **edit comments I have made** so that **I can correct mistakes in my comments**
+- As a **user** I can **delete comments I have made** so that **I can remove comments posted by mistake**
 
 ### **Epic:** Managing Games
 
 **User Stories:**
-- As a **user** I can **request to add a new game to the site's database**
-- As a **user** I can **request edits to an existing game**
-- As a **user** I can **request that a game be deleted from the database**
-- As a **user** I can **add a review to a game**
-- As a **user** I can **edit or delete my own reviews**
-- As a **user** I can **like other users' reviews**
+- As a **user** I can **request to add a new game to the site's database** so that **I can leave reviews and share the game on my profile**
+- As a **user** I can **request edits to an existing game** so that **the information on the site is correct**
+- As a **user** I can **add a review to a game** so that **I can share my thoughts on the game with other users**
+- As a **user** I can **edit or delete my own reviews** so that **I can fix errors or change my review if my opinions change**
+- As a **user** I can **like other users' reviews** so that **I can engage with other reviews I agree with**
 
 ### **Epic:** Admin Capabilities
 
 **User Stories:**
-- As a **site admin** I can **add, edit, and delete games from the database**
-- As a **site admin** I can **remove posts or comments if they are not appropriate or relevant**
-- As a **site admin** I can **see lists of all user profiles, posts, games, reviews, likes, and comments**
+- As a **site admin** I can **add, edit, and delete games from the database** so that **users have the most up-to-date list of games to choose from**
+- As a **site admin** I can **remove posts or comments if they are not appropriate or relevant** so that **the site is enjoyable and accessible to all users**
+- As a **site admin** I can **see lists of all user profiles, posts, games, reviews, likes, and comments** so that **I have an overview of all activity on the site**
 
 ## Testing 
 

@@ -12,21 +12,46 @@ In the planning stage of this project, I created this Entity Relationship Diagra
 ## User Stories
 I have divided the functionality of the site and database into epics and user stories:
 
-**Epic:** Account Management
+### **Epic:** Account Management
 
 **User Stories:**
+- As a **user** I can **sign up for an account** so that I can **make and like posts, and add games**
+- As a **user** I can **log in and out of my account** so that I can **access the site from different devices and keep my account secure**
+- As a **user** I can **add a profile photo and description** so that **I can personalise my profile**
+- As a **user** I can **request to reset my password via email** so that **I can log back in to my account if I forget my login details**
+- As a **user** I can **delete my profile** so that **my personal details are not saved if I don't want to use the site anymore**
 
-**Epic:** Managing Posts
-
-**User Stories:**
-
-**Epic:** Managing Games
-
-**User Stories:**
-
-**Epic:** Admin Capabilities
+### **Epic:** Managing Posts
 
 **User Stories:**
+- As a **user** I can **add a new post when I start playing a game**
+- As a **user** I can **edit my posts if I need to make updates, or finish playing the game**
+- As a **user** I can **delete my posts**
+- As a **user** I can **like and unlike other users' posts**
+
+### **Epic:** Managing Comments
+
+**User Stories:**
+- As a **user** I can **comment on other users' posts**
+- As a **user** I can **edit comments I have made**
+- As a **user** I can **delete comments I have made**
+
+### **Epic:** Managing Games
+
+**User Stories:**
+- As a **user** I can **request to add a new game to the site's database**
+- As a **user** I can **request edits to an existing game**
+- As a **user** I can **request that a game be deleted from the database**
+- As a **user** I can **add a review to a game**
+- As a **user** I can **edit or delete my own reviews**
+- As a **user** I can **like other users' reviews**
+
+### **Epic:** Admin Capabilities
+
+**User Stories:**
+- As a **site admin** I can **add, edit, and delete games from the database**
+- As a **site admin** I can **remove posts or comments if they are not appropriate or relevant**
+- As a **site admin** I can **see lists of all user profiles, posts, games, reviews, likes, and comments**
 
 ## Testing 
 

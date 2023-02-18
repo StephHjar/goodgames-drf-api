@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 class Profile(models.Model):
     """
-    Profile class. Creates a new profile whenever a new user is created.
+    Profile model. Creates a new profile whenever a new user is created.
     Code is from Code Institute's Django REST Framework walkthrough.
     """
     owner = models.OneToOneField(User, on_delete=models.CASCADE)

@@ -86,6 +86,7 @@ You can break the credits section up into Content and Media, depending on what y
 
 ### Media
 
-- The default profile and default post images are from [Code Institute](https://codeinstitute.net/ie/)'s Django REST Framework walkthrough.
+- The default profile image is from [Code Institute](https://codeinstitute.net/ie/)'s Django REST Framework walkthrough.
+- The default game image is from [Clipartmax](https://www.clipartmax.com/middle/m2i8N4Z5N4i8m2A0_file-game-controller-icon-transparent/).
 
 Congratulations on completing your Readme, you have made another big stride in the direction of being a developer! 

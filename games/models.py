@@ -4,8 +4,7 @@ from django.contrib.auth.models import User
 
 class Game(models.Model):
     """
-    Post model, related to 'owner' i.e. a User instance, and to 'game' i.e. a
-    Game instance.
+    Game model, related to 'owner' i.e. a User instance.
     Code adapted from Code Institute's Django REST Framework walkthrough.
     """
     owner = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)

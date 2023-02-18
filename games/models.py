@@ -15,6 +15,7 @@ class Game(models.Model):
     image = models.ImageField(
         upload_to='images/', default='../default_game_a6ytea', blank=True
     )
+    description = models.TextField(blank=True)
 
     class Meta:
         ordering = ['-created_at']

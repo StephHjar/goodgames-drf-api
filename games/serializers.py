@@ -8,5 +8,6 @@ class GameSerializer(serializers.ModelSerializer):
     class Meta:
         model = Game
         fields = [
-            'id', 'owner', 'created_at', 'updated_at', 'title', 'image'
+            'id', 'owner', 'created_at', 'updated_at', 'title', 'image',
+            'description'
         ]

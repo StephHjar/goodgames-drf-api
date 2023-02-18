@@ -8,7 +8,7 @@ class Game(models.Model):
     Game instance.
     Code adapted from Code Institute's Django REST Framework walkthrough.
     """
-    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     title = models.CharField(max_length=255)

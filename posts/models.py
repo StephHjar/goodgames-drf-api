@@ -13,6 +13,8 @@ class Post(models.Model):
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    currently_playing = models.BooleanField(default=True)
+    content = models.TextField(blank=True)
 
     class Meta:
         ordering = ['-created_at']

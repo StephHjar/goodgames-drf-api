@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from posts.models import Post
 from comments.models import Comment
-from games.models import Game
+from reviews.models import Review
 
 
 class Like(models.Model):
@@ -12,20 +12,20 @@ class Like(models.Model):
     """
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(
-        Post, related_name='likes', on_delete=models.CASCADE
+        Post, related_name='likes', null=True, on_delete=models.CASCADE
         )
     comment = models.ForeignKey(
-        Comment, related_name='likes', on_delete=models.CASCADE
+        Comment, related_name='likes', null=True, on_delete=models.CASCADE
     )
-    game = models.ForeignKey(
-        Game, related_name='likes', on_delete=models.CASCADE
+    review = models.ForeignKey(
+        Review, related_name='likes', null=True, on_delete=models.CASCADE
         )
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         ordering = ['-created_at']
         unique_together = [
-            ['owner', 'post'], ['owner', 'comment'], ['owner', 'game']
+            ['owner', 'post'], ['owner', 'comment'], ['owner', 'review']
             ]
 
     def __str__(self):

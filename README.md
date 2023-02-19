@@ -80,9 +80,7 @@ You can break the credits section up into Content and Media, depending on what y
 
 ### Content 
 
-- The text for the Home page was taken from Wikipedia Article A
-- Instructions on how to implement form validation on the Sign Up page was taken from [Specific YouTube Tutorial](https://www.youtube.com/)
-- The icons in the footer were taken from [Font Awesome](https://fontawesome.com/)
+- Instructions for setting min and max values for the 'rating' PositiveIntegerField in the Review model are from [this page](https://adamj.eu/tech/2021/05/08/django-check-constraints-limit-range-integerfield/#:~:text=Django's%20built%2Din%20numerical%20fields,(231%20%E2%88%92%201).) on Adam Johnson's blog.
 
 ### Media
 

@@ -13,7 +13,7 @@ class GameList(generics.ListCreateAPIView):
         serializer.save(owner=self.request.user)
 
 
-class GameDetail(generics.RetrieveUpdateDestroyAPIView()):
+class GameDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = GameSerializer
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Game.objects.all()

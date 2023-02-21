@@ -11,6 +11,8 @@ class PostSerializer(serializers.ModelSerializer):
     game_title = serializers.ReadOnlyField(source='game.title')
     game_image = serializers.ReadOnlyField(source='game.image.url')
     like_id = serializers.SerializerMethodField()
+    comments_count = serializers.ReadOnlyField()
+    likes_count = serializers.ReadOnlyField()
 
     def get_is_owner(self, obj):
         request = self.context['request']
@@ -30,5 +32,6 @@ class PostSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'owner', 'game', 'created_at', 'updated_at', 'is_owner',
             'profile_id', 'profile_image', 'game_title', 'game_image',
-            'currently_playing', 'content', 'like_id',
+            'currently_playing', 'content', 'like_id', 'comments_count',
+            'likes_count'
         ]

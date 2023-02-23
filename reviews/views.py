@@ -19,6 +19,7 @@ class ReviewList(generics.ListCreateAPIView):
     filterset_fields = [
         'likes__owner__profile',
         'owner__profile',
+        'game',
     ]
     ordering_fields = ['likes_count', 'likes__created_at']
 

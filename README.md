@@ -71,21 +71,14 @@ You will need to mention unfixed bugs and why they were not fixed. This section 
 
 This section should describe the process you went through to deploy the project to a hosting platform (e.g. GitHub) 
 
-
 ## Credits 
-
-In this section you need to reference where you got your content, media and extra help from. It is common practice to use code from other repositories and tutorials, however, it is important to be very specific about these sources to avoid plagiarism. 
-
-You can break the credits section up into Content and Media, depending on what you have included in your project. 
-
 ### Content 
 
 - Instructions for setting min and max values for the 'rating' PositiveIntegerField in the Review model are from [this page](https://adamj.eu/tech/2021/05/08/django-check-constraints-limit-range-integerfield/#:~:text=Django's%20built%2Din%20numerical%20fields,(231%20%E2%88%92%201).) on Adam Johnson's blog.
+- I used the [Django Secret Key Generator](https://miniwebtool.com/django-secret-key-generator/) to generate secret keys.
 
 ### Media
 
 - The default profile image is from [Code Institute](https://codeinstitute.net/ie/)'s Django REST Framework walkthrough.
 - The default game image is from [Clipartmax](https://www.clipartmax.com/middle/m2i8N4Z5N4i8m2A0_file-game-controller-icon-transparent/).
 - Game images and descriptions are from [IMDb](https://www.imdb.com/).
-
-Congratulations on completing your Readme, you have made another big stride in the direction of being a developer! 

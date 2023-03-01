@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import Game
+from likes.models import Like
 
 
 class GameSerializer(serializers.ModelSerializer):

@@ -4,6 +4,9 @@ from .models import Game
 
 class GameSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
+    like_id = serializers.SerializerMethodField()
+    reviews_count = serializers.ReadOnlyField()
+    likes_count = serializers.ReadOnlyField()
 
     def validate_image(self, value):
         if value.size > 1024 * 1024 * 2:
@@ -20,9 +23,18 @@ class GameSerializer(serializers.ModelSerializer):
             )
         return value
 
+    def get_like_id(self, obj):
+        user = self.context['request'].user
+        if user.is_authenticated:
+            like = Like.objects.filter(
+                owner=user, game=obj
+            ).first()
+            return like.id if like else None
+        return None
+
     class Meta:
         model = Game
         fields = [
             'id', 'owner', 'created_at', 'updated_at', 'title', 'image',
-            'description'
+            'description', 'like_id', 'reviews_count', 'likes_count'
         ]

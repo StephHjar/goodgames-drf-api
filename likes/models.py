@@ -32,10 +32,10 @@ class Like(models.Model):
 
     class Meta:
         ordering = ['-created_at']
-        unique_together = [
-            ['owner', 'post'], ['owner', 'comment'], ['owner', 'review'],
-            ['owner', 'game'],
-            ]
+        unique_together = (
+            ('owner', 'post'), ('owner', 'comment'), ('owner', 'review'),
+            ('owner', 'game'),
+        )
 
     def __str__(self):
         return f"{self.owner} {self.id}"

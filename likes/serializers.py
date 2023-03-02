@@ -10,6 +10,7 @@ class LikeSerializer(serializers.ModelSerializer):
         model = Like
         fields = ['id', 'created_at', 'owner', 'post', 'review', 'comment',
                   'game']
+        validators = []
 
     def create(self, validated_data):
         try:

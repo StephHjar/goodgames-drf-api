@@ -12,19 +12,19 @@ class Like(models.Model):
     Code from Code Institute's Django REST Framework walkthrough.
     """
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    post = models.OneToOneField(
+    post = models.ForeignKey(
         Post, related_name='likes', blank=True, null=True, default=None,
         on_delete=models.CASCADE
         )
-    comment = models.OneToOneField(
+    comment = models.ForeignKey(
         Comment, related_name='likes', blank=True, null=True, default=None,
         on_delete=models.CASCADE
     )
-    review = models.OneToOneField(
+    review = models.ForeignKey(
         Review, related_name='likes', blank=True, null=True, default=None,
         on_delete=models.CASCADE
         )
-    game = models.OneToOneField(
+    game = models.ForeignKey(
         Game, related_name='likes', blank=True, null=True, default=None,
         on_delete=models.CASCADE
     )

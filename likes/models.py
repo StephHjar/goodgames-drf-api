@@ -13,19 +13,19 @@ class Like(models.Model):
     """
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(
-        Post, related_name='likes', blank=True, null=True,
+        Post, related_name='likes', blank=True, null=True, default=None,
         on_delete=models.CASCADE
         )
     comment = models.ForeignKey(
-        Comment, related_name='likes', blank=True, null=True,
+        Comment, related_name='likes', blank=True, null=True, default=None,
         on_delete=models.CASCADE
     )
     review = models.ForeignKey(
-        Review, related_name='likes', blank=True, null=True,
+        Review, related_name='likes', blank=True, null=True, default=None,
         on_delete=models.CASCADE
         )
     game = models.ForeignKey(
-        Game, related_name='likes', blank=True, null=True,
+        Game, related_name='likes', blank=True, null=True, default=None,
         on_delete=models.CASCADE
     )
     created_at = models.DateTimeField(auto_now_add=True)

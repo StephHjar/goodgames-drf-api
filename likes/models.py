@@ -13,29 +13,29 @@ class Like(models.Model):
     """
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(
-        Post, related_name='likes', blank=True, null=True, default=None,
+        Post, related_name='likes', blank=True, null=True,
         on_delete=models.CASCADE
         )
     comment = models.ForeignKey(
-        Comment, related_name='likes', blank=True, null=True, default=None,
+        Comment, related_name='likes', blank=True, null=True,
         on_delete=models.CASCADE
     )
     review = models.ForeignKey(
-        Review, related_name='likes', blank=True, null=True, default=None,
+        Review, related_name='likes', blank=True, null=True,
         on_delete=models.CASCADE
         )
     game = models.ForeignKey(
-        Game, related_name='likes', blank=True, null=True, default=None,
+        Game, related_name='likes', blank=True, null=True,
         on_delete=models.CASCADE
     )
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         ordering = ['-created_at']
-        # unique_together = (
-        #     ('owner', 'post'), ('owner', 'comment'), ('owner', 'review'),
-        #     ('owner', 'game'),
-        # )
+        unique_together = (
+            ('owner', 'post'), ('owner', 'comment'), ('owner', 'review'),
+            ('owner', 'game'),
+        )
 
     def __str__(self):
         return f"{self.owner} {self.id}"

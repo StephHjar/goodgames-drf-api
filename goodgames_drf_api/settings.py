@@ -61,8 +61,15 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEV' in os.environ
 
-ALLOWED_HOSTS = ['localhost', 'https://goodgames-react.herokuapp.com/.herokuapp.com']  # noqa
+# ALLOWED_HOSTS = [
+#     os.environ.get('ALLOWED_HOST'),
+#     'localhost',
+#     ]
 
+ALLOWED_HOSTS = [
+    os.environ.get("ALLOWED_HOST"),
+    "localhost",
+]
 if "CLIENT_ORIGIN" in os.environ:
     CORS_ALLOWED_ORIGINS = [os.environ.get("CLIENT_ORIGIN")]
 if "CLIENT_ORIGIN_DEV" in os.environ:
@@ -113,6 +120,12 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+if 'CLIENT_ORIGIN' in os.environ:
+    extracted_url = re.match(r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE).group(0)  # noqa
+    CORS_ALLOWED_ORIGIN_REGEXES = [
+        rf"{extracted_url}(eu|us)\d+\w\.gitpod\.io$",
+    ]
 
 CORS_ALLOW_CREDENTIALS = True
 

@@ -1,9 +1,7 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.contrib.auth.models import User
-from django.contrib.contenttypes.fields import GenericRelation
 from games.models import Game
-from likes.models import Like
 
 
 class Review(models.Model):
@@ -19,7 +17,6 @@ class Review(models.Model):
         validators=[MinValueValidator(1), MaxValueValidator(5)]
         )
     content = models.TextField()
-    likes = GenericRelation(Like)
 
     class Meta:
         ordering = ['-created_at']

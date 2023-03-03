@@ -8,8 +8,8 @@ class LikeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Like
-        fields = ['id', 'created_at', 'owner', 'post', 'review', 'comment',
-                  'game']
+        fields = ['id', 'created_at', 'owner', 'game', 'comment', 'post',
+                  'review']
         validators = []
 
     def create(self, validated_data):

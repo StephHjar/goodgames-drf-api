@@ -1,7 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.contrib.contenttypes.fields import GenericRelation
-from likes.models import Like
 
 
 class Game(models.Model):
@@ -17,7 +15,6 @@ class Game(models.Model):
         upload_to='images/', default='../default_game_a6ytea', blank=True
     )
     description = models.TextField(blank=True)
-    likes = GenericRelation(Like)
 
     class Meta:
         ordering = ['-created_at']

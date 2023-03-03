@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from posts.models import Post
+from likes.models import Like
 
 
 class Comment(models.Model):
@@ -13,6 +14,7 @@ class Comment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     content = models.TextField()
+    likes = GenericRelation(Like)
 
     class Meta:
         ordering = ['-created_at']

@@ -37,5 +37,5 @@ class GameSerializer(serializers.ModelSerializer):
         model = Game
         fields = [
             'id', 'owner', 'created_at', 'updated_at', 'title', 'image',
-            'description', 'like_id', 'reviews_count', 'likes_count'
+            'description', 'like_id', 'reviews_count', 'likes_count', 'likes'
         ]

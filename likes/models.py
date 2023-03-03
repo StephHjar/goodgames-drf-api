@@ -2,10 +2,10 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
-from posts.models import Post
-from comments.models import Comment
-from reviews.models import Review
-from games.models import Game
+# from posts.models import Post
+# from comments.models import Comment
+# from reviews.models import Review
+# from games.models import Game
 
 
 class Like(models.Model):
@@ -14,7 +14,7 @@ class Like(models.Model):
     Code from Code Institute's Django REST Framework walkthrough.
     """
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    content_type = models.ForeignKey(ContentType)
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
     # post = models.ForeignKey(
@@ -37,10 +37,10 @@ class Like(models.Model):
 
     class Meta:
         ordering = ['-created_at']
-        unique_together = (
-            ('owner', 'post'), ('owner', 'comment'), ('owner', 'review'),
-            ('owner', 'game'),
-        )
+        # unique_together = (
+        #     ('owner', 'post'), ('owner', 'comment'), ('owner', 'review'),
+        #     ('owner', 'game'),
+        # )
 
     def __str__(self):
         return f"{self.owner} {self.id}"

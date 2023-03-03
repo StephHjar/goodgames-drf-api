@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.contrib.contenttypes.fields import GenericRelation
 from games.models import Game
+from likes.models import Like
 
 
 class Post(models.Model):
@@ -15,6 +17,7 @@ class Post(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     currently_playing = models.BooleanField(default=True)
     content = models.TextField(blank=True)
+    likes = GenericRelation(Like)
 
     class Meta:
         ordering = ['-created_at']

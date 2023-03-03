@@ -24,10 +24,10 @@ class GameSerializer(serializers.ModelSerializer):
             )
         return value
 
-    def get_like_id(self, object_id):
+    def get_like_id(self, obj):
         user = self.context['request'].user
         if user.is_authenticated:
-            like = Like.objects.filter(owner=user).first()
+            like = Like.objects.filter(owner=user, game=obj).first()
             return like.id if like else None
         return None
 

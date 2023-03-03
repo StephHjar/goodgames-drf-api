@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from .models import Review
-from django.contrib.contenttypes.fields import GenericRelation
 from likes.models import Like
 
 
@@ -11,7 +10,6 @@ class ReviewSerializer(serializers.ModelSerializer):
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
     like_id = serializers.SerializerMethodField()
     likes_count = serializers.ReadOnlyField()
-    likes = GenericRelation(Like)
 
     def get_is_owner(self, obj):
         request = self.context['request']
@@ -30,7 +28,7 @@ class ReviewSerializer(serializers.ModelSerializer):
         model = Review
         fields = ['id', 'owner', 'game', 'created_at',
                   'updated_at', 'rating', 'content', 'is_owner', 'profile_id',
-                  'profile_image', 'like_id', 'likes_count', 'likes']
+                  'profile_image', 'like_id', 'likes_count']
 
 
 class ReviewDetailSerializer(ReviewSerializer):

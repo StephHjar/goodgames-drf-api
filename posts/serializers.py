@@ -33,5 +33,5 @@ class PostSerializer(serializers.ModelSerializer):
             'id', 'owner', 'game', 'created_at', 'updated_at', 'is_owner',
             'profile_id', 'profile_image', 'game_title', 'game_image',
             'currently_playing', 'content', 'like_id', 'comments_count',
-            'likes_count', 'likes',
+            'likes_count'
         ]

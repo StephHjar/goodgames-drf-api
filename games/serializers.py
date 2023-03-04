@@ -5,6 +5,7 @@ from likes.models import Like
 
 class GameSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
+    is_admin = serializers.SerializerMethodField()
     like_id = serializers.SerializerMethodField()
     reviews_count = serializers.ReadOnlyField()
     likes_count = serializers.ReadOnlyField()
@@ -24,6 +25,10 @@ class GameSerializer(serializers.ModelSerializer):
             )
         return value
 
+    def get_is_admin(self, obj):
+        user = self.context['request'].user
+        return user.username == 'admin'
+
     def get_like_id(self, obj):
         user = self.context['request'].user
         if user.is_authenticated:
@@ -35,5 +40,6 @@ class GameSerializer(serializers.ModelSerializer):
         model = Game
         fields = [
             'id', 'owner', 'created_at', 'updated_at', 'title', 'image',
-            'description', 'like_id', 'reviews_count', 'likes_count'
+            'description', 'like_id', 'reviews_count', 'likes_count',
+            'is_admin',
         ]

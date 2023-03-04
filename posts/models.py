@@ -13,7 +13,9 @@ class Post(models.Model):
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    currently_playing = models.BooleanField(default=True)
+    currently_playing = models.BooleanField(default=True, blank=True,
+                                            null=True)
+    completed = models.BooleanField(default=False, blank=True, null=True)
     content = models.TextField(blank=True)
 
     class Meta:

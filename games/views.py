@@ -38,3 +38,8 @@ class GameDetail(generics.RetrieveUpdateDestroyAPIView):
         likes_count=Count('likes', distinct=True),
         reviews_count=Count('review', distinct=True)
     ).order_by('-created_at')
+
+
+def show_game_titles(request):
+    results = Game.objects.all()
+    return render((request, {"Game": results}))

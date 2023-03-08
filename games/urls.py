@@ -4,5 +4,5 @@ from games import views
 urlpatterns = [
     path('games/', views.GameList.as_view()),
     path('games/<int:pk>/', views.GameDetail.as_view()),
-    path('games/all/', views.show_game_titles)
+    path('games/all/', views.GameTitles.as_view()),
 ]

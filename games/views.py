@@ -40,6 +40,8 @@ class GameDetail(generics.RetrieveUpdateDestroyAPIView):
     ).order_by('-created_at')
 
 
-def show_game_titles(request):
-    results = Game.objects.all()
-    return render((request, {"Game": results}))
+class GameTitles(generics.ListAPIView):
+    serializer_class = GameSerializer
+    permission_classes = [IsOwnerOrReadOnly]
+    pagination_class = None
+    queryset = Game.objects.all().order_by('title')

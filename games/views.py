@@ -38,10 +38,3 @@ class GameDetail(generics.RetrieveUpdateDestroyAPIView):
         likes_count=Count('likes', distinct=True),
         reviews_count=Count('review', distinct=True)
     ).order_by('-created_at')
-
-
-class GameTitles(generics.ListAPIView):
-    serializer_class = GameSerializer
-    permission_classes = [IsOwnerOrReadOnly]
-    pagination_class = None
-    queryset = Game.objects.all().order_by('title')

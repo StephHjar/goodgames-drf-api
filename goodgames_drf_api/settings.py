@@ -66,20 +66,6 @@ DEBUG = 'DEV' in os.environ
 #     'localhost',
 #     ]
 
-ALLOWED_HOSTS = [
-    os.environ.get("ALLOWED_HOST"),
-    "localhost",
-]
-if "CLIENT_ORIGIN" in os.environ:
-    CORS_ALLOWED_ORIGINS = [os.environ.get("CLIENT_ORIGIN")]
-if "CLIENT_ORIGIN_DEV" in os.environ:
-    extracted_url = re.match(
-        r"^.+-", os.environ.get("CLIENT_ORIGIN_DEV", ""), re.IGNORECASE
-    ).group(0)
-    CORS_ALLOWED_ORIGIN_REGEXES = [
-        rf"{extracted_url}(eu|us)\d+\w\.gitpod\.io$",
-    ]
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -121,13 +107,34 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-if 'CLIENT_ORIGIN' in os.environ:
-    extracted_url = re.match(r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE).group(0)  # noqa
+ALLOWED_HOSTS = [
+    os.environ.get("ALLOWED_HOST"),
+    "localhost",
+]
+
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+
+if "CLIENT_ORIGIN" in os.environ:
+    CORS_ALLOWED_ORIGINS = [os.environ.get("CLIENT_ORIGIN")]
+if "CLIENT_ORIGIN_DEV" in os.environ:
+    extracted_url = re.match(
+        r"^.+-", os.environ.get("CLIENT_ORIGIN_DEV", ""), re.IGNORECASE
+    ).group(0)
     CORS_ALLOWED_ORIGIN_REGEXES = [
         rf"{extracted_url}(eu|us)\d+\w\.gitpod\.io$",
     ]
 
 CORS_ALLOW_CREDENTIALS = True
+# Suggesrted by stackoverflow after migrating to render :
+CORS_ALLOW_ALL_ORIGINS = True
+# suggested additions (all three) by Johan :
+CORS_ALLOW_HEADERS = list(default_headers)
+CORS_ALLOW_METHODS = list(default_methods)
+CSRF_TRUSTED_ORIGINS = [os.environ.get(
+    'CLIENT_ORIGIN_DEV', 'CLIENT_ORIGIN',
+)]
 
 ROOT_URLCONF = 'goodgames_drf_api.urls'
 

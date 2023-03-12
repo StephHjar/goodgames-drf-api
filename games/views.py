@@ -37,7 +37,7 @@ class GameList(generics.ListCreateAPIView):
 
 class GameDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = GameSerializer
-    permission_classes = [IsOwnerOrReadOnly]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Game.objects.annotate(
         likes_count=Count('likes', distinct=True),
         reviews_count=Count('review', distinct=True)

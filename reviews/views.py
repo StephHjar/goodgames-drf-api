@@ -7,6 +7,9 @@ from .serializers import ReviewSerializer, ReviewDetailSerializer
 
 
 class ReviewList(generics.ListCreateAPIView):
+    """
+    List reviews. Code adapted from Code Institute's DRF API walkthrough.
+    """
     serializer_class = ReviewSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Review.objects.annotate(
@@ -28,6 +31,10 @@ class ReviewList(generics.ListCreateAPIView):
 
 
 class ReviewDetail(generics.RetrieveUpdateDestroyAPIView):
+    """
+    Update and destroy reviews. Code adapted from Code Institute's DRF API
+    walkthrough.
+    """
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = ReviewDetailSerializer
     queryset = Review.objects.annotate(

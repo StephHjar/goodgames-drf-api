@@ -7,6 +7,10 @@ from goodgames_drf_api.permissions import IsOwnerOrReadOnly
 
 
 class GameList(generics.ListCreateAPIView):
+    """
+    List and create games. Code adapted from Code Institute's DRF API
+    walkthrough.
+    """
     serializer_class = GameSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Game.objects.annotate(

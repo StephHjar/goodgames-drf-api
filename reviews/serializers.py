@@ -4,6 +4,10 @@ from likes.models import Like
 
 
 class ReviewSerializer(serializers.ModelSerializer):
+    """
+    Review serializer. Code adapted from Code Institute's DRF API
+    walkthrough.
+    """
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')

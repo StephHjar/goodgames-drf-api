@@ -4,6 +4,9 @@ from .models import Like
 
 
 class LikeSerializer(serializers.ModelSerializer):
+    """
+    Like serializer. Code from Code Institute's DRF API walkthrough.
+    """
     owner = serializers.ReadOnlyField(source='owner.username')
 
     class Meta:

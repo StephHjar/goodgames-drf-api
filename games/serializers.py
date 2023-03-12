@@ -5,6 +5,10 @@ from reviews.models import Review
 
 
 class GameSerializer(serializers.ModelSerializer):
+    """
+    Game model serializer. Code adapted from Code Institute's DRF API
+    walkthrough.
+    """
     owner = serializers.ReadOnlyField(source='owner.username')
     is_admin = serializers.SerializerMethodField()
     like_id = serializers.SerializerMethodField()

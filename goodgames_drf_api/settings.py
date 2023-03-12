@@ -43,6 +43,7 @@ if 'DEV' not in os.environ:
         'rest_framework.renderers.JSONRenderer',
     ]
 
+# JWT settings
 REST_USE_JWT = True
 JWT_AUTH_SECURE = True
 JWT_AUTH_COOKIE = 'my-app-auth'
@@ -127,10 +128,10 @@ if "CLIENT_ORIGIN_DEV" in os.environ:
         rf"{extracted_url}(eu|us)\d+\w\.gitpod\.io$",
     ]
 
+# CORS settings added at my mentor Martina's suggestion, to prevent CORS
+# Header errors
 CORS_ALLOW_CREDENTIALS = True
-# Suggesrted by stackoverflow after migrating to render :
 CORS_ALLOW_ALL_ORIGINS = True
-# suggested additions (all three) by Johan :
 CORS_ALLOW_HEADERS = list(default_headers)
 CORS_ALLOW_METHODS = list(default_methods)
 CSRF_TRUSTED_ORIGINS = [os.environ.get(

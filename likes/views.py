@@ -5,6 +5,9 @@ from .serializers import LikeSerializer
 
 
 class LikeList(generics.ListCreateAPIView):
+    """
+    View and create likes. Code from Code Institute's DRF API walkthrough.
+    """
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     serializer_class = LikeSerializer
     queryset = Like.objects.all()
@@ -14,6 +17,9 @@ class LikeList(generics.ListCreateAPIView):
 
 
 class LikeDetail(generics.RetrieveDestroyAPIView):
+    """
+    Retrieve and destroy likes. Code from Code Institute's DRF API walkthrough.
+    """
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = LikeSerializer
     queryset = Like.objects.all()

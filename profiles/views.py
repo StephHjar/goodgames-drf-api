@@ -6,6 +6,10 @@ from goodgames_drf_api.permissions import IsOwnerOrReadOnly
 
 
 class ProfileList(generics.ListAPIView):
+    """
+    List all profiles. Code adapted from Code Institute's DRF API
+    walkthrough.
+    """
     queryset = Profile.objects.annotate(
         posts_count=Count('owner__post', distinct=True),
         reviews_count=Count('owner__review', distinct=True),
@@ -18,6 +22,10 @@ class ProfileList(generics.ListAPIView):
 
 
 class ProfileDetail(generics.RetrieveUpdateDestroyAPIView):
+    """
+    Update and destroy profiles. Code adapted from Code Institute's DRF API
+    walkthrough.
+    """
     serializer_class = ProfileSerializer
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Profile.objects.annotate(

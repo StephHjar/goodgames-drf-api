@@ -7,6 +7,10 @@ from goodgames_drf_api.permissions import IsOwnerOrReadOnly
 
 
 class PostList(generics.ListCreateAPIView):
+    """
+    List and create posts. Code adapted from Code Institute's DRF API
+    walkthrough.
+    """
     serializer_class = PostSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Post.objects.annotate(
@@ -33,6 +37,10 @@ class PostList(generics.ListCreateAPIView):
 
 
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
+    """
+    Update and destroy posts. Code adapted from Code Institute's DRF API
+    walkthrough.
+    """
     serializer_class = PostSerializer
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Post.objects.annotate(

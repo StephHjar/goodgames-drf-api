@@ -1,16 +1,20 @@
 # GoodGames
 Welcome to the DRF API for GoodGames! 
 
-GoodGames is a website where you can share the video games you're currently playing, and leave a review for each game. You can like other users' posts, reviews, and games, and leave comments on other users' "Currently Playing" posts. 
+GoodGames is a website where you can share the video games you're currently playing, and leave a review for each game. You can leave comments on other users' posts. You can like other users' posts, comments, reviews, and games, and customise your own profile image and description.
 
-This is the backend API database, built with Django REST Framework. The deployed version of the API is HERE, and the deployed version of the full site built in React is HERE.
+This is the backend API database, built with Django REST Framework.
+
+- The deployed version of the API is [HERE](https://goodgames-drf-api.herokuapp.com/).
+- The deployed version of the full site built in React is [HERE](https://goodgames-react.herokuapp.com/).
+- The frontend repository is [HERE](https://github.com/StephHjar/goodgames-react).
 
 ## Entity Relationship Diagram
 In the planning stage of this project, I created this Entity Relationship Diagram (ERD) to better visualize the relationships between models in the database.
 ![ERD for GoodGames database](static/readme/PP5-ERD.png)
 
 ## User Stories
-I have divided the functionality of the site and database into epics and user stories:
+I have divided the functionality of the site and database into epics and user stories. These can be found on the [project board](https://github.com/users/StephHjar/projects/6/views/1) of my frontend app, and documented below:
 
 ### **Epic:** Account Management
 
@@ -53,23 +57,116 @@ I have divided the functionality of the site and database into epics and user st
 - As a **site admin** I can **see lists of all user profiles, posts, games, reviews, likes, and comments** so that **I have an overview of all activity on the site**
 
 ## Testing 
-
-### Manual Testing
-
-### Validator Testing 
-
-- HTML
-  - No errors were returned when passing through the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fcode-institute-org.github.io%2Flove-running-2.0%2Findex.html)
-- CSS
-  - No errors were found when passing through the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fvalidator.w3.org%2Fnu%2F%3Fdoc%3Dhttps%253A%252F%252Fcode-institute-org.github.io%252Flove-running-2.0%252Findex.html&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en#css)
-
-### Unfixed Bugs
-
-You will need to mention unfixed bugs and why they were not fixed. This section should include shortcomings of the frameworks or technologies used. Although time can be a big variable to consider, paucity of time and difficulty understanding implementation is not a valid reason to leave bugs unfixed. 
+Manual and validator testing is doumented in my [Testing file](TESTING.md).
 
 ## Deployment
+## Deployment
 
-This section should describe the process you went through to deploy the project to a hosting platform (e.g. GitHub) 
+### Local Deployment
+​
+*Gitpod* IDE was used to write the code for this project.
+
+To preview the project in the development environment, run the following command in the terminal:
+```python3 manage.py runterminal```. This will open port 8000. Click *Open Browser* when the popup window appears.
+
+To make a local copy of this repository, you can clone the project by typing the follow into your IDE terminal:
+- `git clone https://github.com/StephHjar/me1-planet-tracker.git`
+
+Alternatively, if using Gitpod, you can click below to create your own workspace using this repository.
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/StephHjar/me1-planet-tracker)
+
+### Preparing File for Deployment
+If you have not already set up Postgres for use in the deployed application, complete the following steps:
+
+- In the terminal, type `pip3 install psycopg2-binary` and press enter.
+- Install gunicorn, which will act as the web server. Type `pip3 install gunicorn` in the terminal and press enter.
+- You can install this project's requirements (where applicable) using: `pip3 install -r requirements.txt`. If you have your own packages that have been installed, which I did, then the requirements file needs to be updated using: `pip3 freeze --local > requirements.txt`:
+  - In the terminal, type `pip3 freeze --local > requirements.txt`. This will create or update a file called `requirements.txt`, with a list of all the packages that Heroku will need to install to run our app.
+- Create a Procfile in the root folder of your project, and add the following to the Procfile: `web: gunicorn <app_name>.wsgi:application`.
+
+### ElephantSQL Deployment
+
+To host my database, I used ElephantSQL. 
+
+The instructions to create a new account can be[found here](https://code-institute-students.github.io/deployment-docs/02-elephantsql/elephantsql-01-sign-up), provided by Code Institute. 
+
+Once you have created an account:
+- Log in to ElephantSQL to access your dashboard.
+- Click *Create New Instance*.
+- Give your plan a name (usually the name of the project, in this case *GoodGames-DRF-API*).
+- Select the Tiny Turtle (Free) plan.
+- Leave the Tags field blank.
+- Click *Select Region* and choose a data center near you.
+- Click *Review*, then, if everything looks correct, *Create Instance*.
+- Go back to your dashboard and click on the name of the project. 
+- Copy the database URL for your project, and use it in two places:
+  - In your `env.py` file, create a new key called `DATABASE_URL` and give it the value of the ElephantSQL database URL, as follows: ` os.environ.setdefault("DATABASE_URL", "my_copied_database_url")`.
+    - Before deploying the project, create a file called `env.py` (if it hasn't been created already), and complete the following steps:
+      - In `settings.py`: At the top of the file, add the following import:
+      ```python
+      import os
+
+      if os.path.isfile("env.py"):
+          import env
+      ```
+      - Replace the pasted-in database url with the following code:
+      ```python
+      os.environ.get("DATABASE_URL")
+      ```
+  - Paste the database URL into the config vars section of your project on Heroku - instructions are in the *Heroku Deployment* section below. 
+
+After the above steps are completed, install dj-database-url to your project, by typing the following command in the terminal and pressing enter:
+- `os.environ.setdefault("DATABASE_URL", "my_copied_database_url")`
+- Then update `requirements.txt` by typing `pip3 freeze --local > requirements.txt`.
+
+### Heroku Deployment
+​
+This project uses [Heroku](https://www.heroku.com), a platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud.
+
+To set up an account:
+
+- Go to [heroku.com](https://www.heroku.com) to register for a free account.
+- For my account, I set my *Role* as *Hobbyist* and *Primary development language* as Python.
+- Click *Create free account*.
+
+I used the [Code Institute Gitpod Full Template](https://github.com/Code-Institute-Org/gitpod-full-template) for this project, which means the Heroku command line interface (CLI) came pre-installed. Please check the [Heroku documentation](https://devcenter.heroku.com/articles/heroku-cli) for the most up-to-date installation instructions. 
+
+To log in to the Heroku CLI:
+
+- In the terminal, type ```heroku login -i``` and press enter.. 
+- Enter your username and password in the terminal.
+- If you have Multi-Factor Authentication turned on:
+  - Click on Account Settings (via the avatar menu) on the Heroku Dashboard.
+  - Scroll down to the API Key section and click Reveal. Copy the key.
+  - Use the login command: heroku login -i
+  - Enter your Heroku username.
+  - Enter the API key you just copied when prompted for your password.
+
+Deployment steps are as follows, from the Heroku dashboard:
+​
+- Select *New* in the top-right corner of your Heroku Dashboard, and select *Create new app* from the dropdown menu.
+- Enter a name for your app. The app name must be unique, so you need to adjust the name until you find a name that hasn't been used.
+- From the dropdown, choose the region closest to you (EU or USA), and finally, select *Create App*.
+- From the new app *Settings*, click *Reveal Config Vars*, and add a new Config Var with the KEY set to `DATABASE_URL` and the value to the ElephantSQL database URL you copied above.
+- I added additional Config Vars for the folLowing:
+  - `ALLOWED_HOST` with the url for my deployed API (*goodgames-drf-api.herokuapp.com*).
+  - `CLIENT_ORIGIN` with the url for my deployed frontend application (*https://goodgames-react.herokuapp.com*).
+  - `CLIENT_ORIGIN_DEV` with the url for the development version of my frontend application (*https://3000-stephhjar-goodgamesreac-2fkbldq92dd.ws-eu89.gitpod.io*)
+  - `CLOUDINARY_URL` copied from my [Cloudinary](https://cloudinary.com/) dashboard, because I used Cloudinary to host my static files.
+  - `DISABLE_COLLECTSTATIC` to *1* because I do not need to load new static files on deployment.
+  - `SECRET_KEY` which contains my secret key (also included in `env.py`).
+
+For Heroku deployment, follow these steps to connect your GitHub repository to the newly created app:
+​
+- At the top of the screen on Heroku, select *Deploy*.
+- Next to *Deployment method* select *GitHub*, then scroll down and click *Connect to GitHub* to confirm you want to connect.
+- In the *repo-name* field, search for the name of the GitHub repository to deploy, and click *Search*.
+- Click *Connect* to link the GitHub repository with Heroku. 
+- Scroll down to the *Manual deploy* section, and click *Deploy Branch*.
+- If you like, click *Enable Automatic Deploys* in the *Automatic deploys* section to have Heroku rebuild your app every time you push a new change to GitHub.
+
+Push this update to GitHub, and the project should now be deployed and live on Heroku. 
 
 ## Credits 
 ### Content 

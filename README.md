@@ -60,7 +60,6 @@ I have divided the functionality of the site and database into epics and user st
 Manual and validator testing is doumented in my [Testing file](TESTING.md).
 
 ## Deployment
-## Deployment
 
 ### Local Deployment
 ​
@@ -70,11 +69,11 @@ To preview the project in the development environment, run the following command
 ```python3 manage.py runterminal```. This will open port 8000. Click *Open Browser* when the popup window appears.
 
 To make a local copy of this repository, you can clone the project by typing the follow into your IDE terminal:
-- `git clone https://github.com/StephHjar/me1-planet-tracker.git`
+- `git clone https://github.com/StephHjar/goodgames-drf-api.git` 
 
 Alternatively, if using Gitpod, you can click below to create your own workspace using this repository.
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/StephHjar/me1-planet-tracker)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/StephHjar/goodgames-drf-api)
 
 ### Preparing File for Deployment
 If you have not already set up Postgres for use in the deployed application, complete the following steps:

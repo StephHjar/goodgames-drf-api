@@ -57,7 +57,7 @@ I have divided the functionality of the site and database into epics and user st
 - As a **site admin** I can **see lists of all user profiles, posts, games, reviews, likes, and comments** so that **I have an overview of all activity on the site**
 
 ## Testing 
-Manual and validator testing is doumented in my [Testing file](TESTING.md).
+Manual and validator testing is documented in my [Testing file](TESTING.md).
 
 ## Deployment
 
